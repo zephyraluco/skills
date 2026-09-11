@@ -1,5 +1,5 @@
 ---
-name: python-patterns
+name: python-coding-standards
 description: Pythonic 惯用法、PEP 8 标准、类型提示以及构建稳健、高效且可维护的 Python 应用程序的最佳实践
 license: MIT
 metadata:
