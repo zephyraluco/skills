@@ -1,65 +1,65 @@
 ---
 name: web-coding-standards
-description: Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.
+description: 面向 TypeScript、JavaScript、React 和 Node.js 开发的通用编码规范、最佳实践与模式。
 metadata:
   origin: ECC
 ---
 
-# Coding Standards & Best Practices
+# 编码规范与最佳实践
 
-Universal coding standards applicable across all projects.
+适用于所有项目的通用编码规范。
 
-## When to Activate
+## 何时启用
 
-- Starting a new project or module
-- Reviewing code for quality and maintainability
-- Refactoring existing code to follow conventions
-- Enforcing naming, formatting, or structural consistency
-- Setting up linting, formatting, or type-checking rules
-- Onboarding new contributors to coding conventions
+- 开始一个新项目或模块
+- 从质量和可维护性角度审查代码
+- 重构现有代码以符合约定
+- 推行命名、格式或结构上的一致性
+- 设置 lint、格式化或类型检查规则
+- 帮助新贡献者了解编码约定
 
-## Scope Boundaries
+## 适用范围边界
 
-Activate this skill for:
-- descriptive naming
-- immutability defaults
-- readability, KISS, DRY, and YAGNI enforcement
-- error-handling expectations and code-smell review
+在以下情况启用本技能：
+- 描述性命名
+- 默认不可变
+- 可读性、KISS、DRY 和 YAGNI 的推行
+- 错误处理期望与代码异味（code smell）审查
 
-Do not use this skill as the primary source for:
-- React composition, hooks, or rendering patterns
-- backend architecture, API design, or database layering
-- domain-specific framework guidance when a narrower ECC skill already exists
+不要将本技能作为以下方面的主要依据：
+- React 组合、hooks 或渲染模式
+- 后端架构、API 设计或数据库分层
+- 当已有更专门的 ECC 技能存在时，特定领域的框架指导
 
-## Code Quality Principles
+## 代码质量原则
 
-### 1. Readability First
-- Code is read more than written
-- Clear variable and function names
-- Self-documenting code preferred over comments
-- Consistent formatting
+### 1. 可读性优先
+- 代码被阅读的次数多于被编写的次数
+- 清晰的变量名和函数名
+- 自文档化代码优先于注释
+- 一致的格式
 
-### 2. KISS (Keep It Simple, Stupid)
-- Simplest solution that works
-- Avoid over-engineering
-- No premature optimization
-- Easy to understand > clever code
+### 2. KISS（保持简单直接）
+- 能工作的最简单方案
+- 避免过度工程
+- 不做过早优化
+- 易于理解 > 耍小聪明
 
-### 3. DRY (Don't Repeat Yourself)
-- Extract common logic into functions
-- Create reusable components
-- Share utilities across modules
-- Avoid copy-paste programming
+### 3. DRY（不要重复自己）
+- 将公共逻辑提取为函数
+- 创建可复用组件
+- 在模块间共享工具函数
+- 避免复制粘贴式编程
 
-### 4. YAGNI (You Aren't Gonna Need It)
-- Don't build features before they're needed
-- Avoid speculative generality
-- Add complexity only when required
-- Start simple, refactor when needed
+### 4. YAGNI（你不会需要它）
+- 在需要之前不要构建功能
+- 避免臆测性的泛化
+- 只有必要时才增加复杂度
+- 从简单开始，需要时再重构
 
-## TypeScript/JavaScript Standards
+## TypeScript/JavaScript 规范
 
-### Variable Naming
+### 变量命名
 
 ```typescript
 // PASS: GOOD: Descriptive names
@@ -73,7 +73,7 @@ const flag = true
 const x = 1000
 ```
 
-### Function Naming
+### 函数命名
 
 ```typescript
 // PASS: GOOD: Verb-noun pattern
@@ -87,7 +87,7 @@ function similarity(a, b) { }
 function email(e) { }
 ```
 
-### Immutability Pattern (CRITICAL)
+### 不可变模式（关键）
 
 ```typescript
 // PASS: ALWAYS use spread operator
@@ -103,7 +103,7 @@ user.name = 'New Name'  // BAD
 items.push(newItem)     // BAD
 ```
 
-### Error Handling
+### 错误处理
 
 ```typescript
 // PASS: GOOD: Comprehensive error handling
@@ -129,7 +129,7 @@ async function fetchData(url) {
 }
 ```
 
-### Async/Await Best Practices
+### Async/Await 最佳实践
 
 ```typescript
 // PASS: GOOD: Parallel execution when possible
@@ -145,7 +145,7 @@ const markets = await fetchMarkets()
 const stats = await fetchStats()
 ```
 
-### Type Safety
+### 类型安全
 
 ```typescript
 // PASS: GOOD: Proper types
@@ -166,9 +166,9 @@ function getMarket(id: any): Promise<any> {
 }
 ```
 
-## React Best Practices
+## React 最佳实践
 
-### Component Structure
+### 组件结构
 
 ```typescript
 // PASS: GOOD: Functional component with types
@@ -202,7 +202,7 @@ export function Button(props) {
 }
 ```
 
-### Custom Hooks
+### 自定义 Hooks
 
 ```typescript
 // PASS: GOOD: Reusable custom hook
@@ -224,7 +224,7 @@ export function useDebounce<T>(value: T, delay: number): T {
 const debouncedQuery = useDebounce(searchQuery, 500)
 ```
 
-### State Management
+### 状态管理
 
 ```typescript
 // PASS: GOOD: Proper state updates
@@ -237,7 +237,7 @@ setCount(prev => prev + 1)
 setCount(count + 1)  // Can be stale in async scenarios
 ```
 
-### Conditional Rendering
+### 条件渲染
 
 ```typescript
 // PASS: GOOD: Clear conditional rendering
@@ -249,9 +249,9 @@ setCount(count + 1)  // Can be stale in async scenarios
 {isLoading ? <Spinner /> : error ? <ErrorMessage error={error} /> : data ? <DataDisplay data={data} /> : null}
 ```
 
-## API Design Standards
+## API 设计规范
 
-### REST API Conventions
+### REST API 约定
 
 ```
 GET    /api/markets              # List all markets
@@ -265,7 +265,7 @@ DELETE /api/markets/:id          # Delete market
 GET /api/markets?status=active&limit=10&offset=0
 ```
 
-### Response Format
+### 响应格式
 
 ```typescript
 // PASS: GOOD: Consistent response structure
@@ -294,7 +294,7 @@ return NextResponse.json({
 }, { status: 400 })
 ```
 
-### Input Validation
+### 输入校验
 
 ```typescript
 import { z } from 'zod'
@@ -325,9 +325,9 @@ export async function POST(request: Request) {
 }
 ```
 
-## File Organization
+## 文件组织
 
-### Project Structure
+### 项目结构
 
 ```
 src/
@@ -348,7 +348,7 @@ src/
 └── styles/              # Global styles
 ```
 
-### File Naming
+### 文件命名
 
 ```
 components/Button.tsx          # PascalCase for components
@@ -357,9 +357,9 @@ lib/formatDate.ts             # camelCase for utilities
 types/market.types.ts         # camelCase with .types suffix
 ```
 
-## Comments & Documentation
+## 注释与文档
 
-### When to Comment
+### 何时注释
 
 ```typescript
 // PASS: GOOD: Explain WHY, not WHAT
@@ -377,7 +377,7 @@ count++
 name = user.name
 ```
 
-### JSDoc for Public APIs
+### 为公共 API 编写 JSDoc
 
 ```typescript
 /**
@@ -402,9 +402,9 @@ export async function searchMarkets(
 }
 ```
 
-## Performance Best Practices
+## 性能最佳实践
 
-### Memoization
+### 记忆化（Memoization）
 
 ```typescript
 import { useMemo, useCallback } from 'react'
@@ -421,7 +421,7 @@ const handleSearch = useCallback((query: string) => {
 }, [])
 ```
 
-### Lazy Loading
+### 懒加载
 
 ```typescript
 import { lazy, Suspense } from 'react'
@@ -438,7 +438,7 @@ export function Dashboard() {
 }
 ```
 
-### Database Queries
+### 数据库查询
 
 ```typescript
 // PASS: GOOD: Select only needed columns
@@ -453,9 +453,9 @@ const { data } = await supabase
   .select('*')
 ```
 
-## Testing Standards
+## 测试规范
 
-### Test Structure (AAA Pattern)
+### 测试结构（AAA 模式）
 
 ```typescript
 test('calculates similarity correctly', () => {
@@ -471,7 +471,7 @@ test('calculates similarity correctly', () => {
 })
 ```
 
-### Test Naming
+### 测试命名
 
 ```typescript
 // PASS: GOOD: Descriptive test names
@@ -484,11 +484,11 @@ test('works', () => { })
 test('test search', () => { })
 ```
 
-## Code Smell Detection
+## 代码异味检测
 
-Watch for these anti-patterns:
+留意以下反模式：
 
-### 1. Long Functions
+### 1. 过长的函数
 ```typescript
 // FAIL: BAD: Function > 50 lines
 function processMarketData() {
@@ -503,7 +503,7 @@ function processMarketData() {
 }
 ```
 
-### 2. Deep Nesting
+### 2. 过深的嵌套
 ```typescript
 // FAIL: BAD: 5+ levels of nesting
 if (user) {
@@ -528,7 +528,7 @@ if (!hasPermission) return
 // Do something
 ```
 
-### 3. Magic Numbers
+### 3. 魔法数字
 ```typescript
 // FAIL: BAD: Unexplained numbers
 if (retryCount > 3) { }
@@ -542,4 +542,4 @@ if (retryCount > MAX_RETRIES) { }
 setTimeout(callback, DEBOUNCE_DELAY_MS)
 ```
 
-**Remember**: Code quality is not negotiable. Clear, maintainable code enables rapid development and confident refactoring.
+**请记住**：代码质量不容妥协。清晰、可维护的代码能带来快速开发和有自信的重构。

@@ -1,26 +1,28 @@
 ---
 name: python-patterns
-description: Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications. Use when writing or reviewing Python code and idiomatic structure, typing, or PEP 8 is in question.
+description: Pythonic 惯用法、PEP 8 标准、类型提示以及构建稳健、高效且可维护的 Python 应用程序的最佳实践
+license: MIT
 metadata:
-  origin: ECC
+  author: zeal
+  version: "0.0.1"
 ---
 
-# Python Development Patterns
+# Python 开发模式
 
-Idiomatic Python patterns and best practices for building robust, efficient, and maintainable applications.
+用于构建健壮、高效且可维护应用的 Pythonic 模式与最佳实践。
 
-## When to Activate
+## 何时启用
 
-- Writing new Python code
-- Reviewing Python code
-- Refactoring existing Python code
-- Designing Python packages/modules
+- 编写新的 Python 代码
+- 审查 Python 代码
+- 重构现有 Python 代码
+- 设计 Python 包/模块
 
-## Core Principles
+## 核心原则
 
-### 1. Readability Counts
+### 1. 可读性至上
 
-Python prioritizes readability. Code should be obvious and easy to understand.
+Python 优先考虑可读性。代码应当显而易见且易于理解。
 
 ```python
 # Good: Clear and readable
@@ -34,9 +36,9 @@ def get_active_users(u):
     return [x for x in u if x.a]
 ```
 
-### 2. Explicit is Better Than Implicit
+### 2. 显式优于隐式
 
-Avoid magic; be clear about what your code does.
+避免魔法；清楚表达代码在做什么。
 
 ```python
 # Good: Explicit configuration
@@ -52,9 +54,9 @@ import some_module
 some_module.setup()  # What does this do?
 ```
 
-### 3. EAFP - Easier to Ask Forgiveness Than Permission
+### 3. EAFP —— 请求原谅比请求许可更容易
 
-Python prefers exception handling over checking conditions.
+Python 更偏好异常处理，而非先检查条件。
 
 ```python
 # Good: EAFP style
@@ -72,9 +74,9 @@ def get_value(dictionary: dict, key: str, default_value: Any = None) -> Any:
         return default_value
 ```
 
-## Type Hints
+## 类型提示
 
-### Basic Type Annotations
+### 基础类型注解
 
 ```python
 from typing import Optional, List, Dict, Any
@@ -90,7 +92,7 @@ def process_user(
     return User(user_id, data)
 ```
 
-### Modern Type Hints (Python 3.9+)
+### 现代类型提示（Python 3.9+）
 
 ```python
 # Python 3.9+ - Use built-in types
@@ -104,7 +106,7 @@ def process_items(items: List[str]) -> Dict[str, int]:
     return {item: len(item) for item in items}
 ```
 
-### Type Aliases and TypeVar
+### 类型别名与 TypeVar
 
 ```python
 from typing import TypeVar, Union
@@ -123,7 +125,7 @@ def first(items: list[T]) -> T | None:
     return items[0] if items else None
 ```
 
-### Protocol-Based Duck Typing
+### 基于 Protocol 的鸭子类型
 
 ```python
 from typing import Protocol
@@ -137,9 +139,9 @@ def render_all(items: list[Renderable]) -> str:
     return "\n".join(item.render() for item in items)
 ```
 
-## Error Handling Patterns
+## 错误处理模式
 
-### Specific Exception Handling
+### 捕获特定异常
 
 ```python
 # Good: Catch specific exceptions
@@ -161,7 +163,7 @@ def load_config(path: str) -> Config:
         return None  # Silent failure!
 ```
 
-### Exception Chaining
+### 异常链
 
 ```python
 def process_data(data: str) -> Result:
@@ -172,7 +174,7 @@ def process_data(data: str) -> Result:
         raise ValueError(f"Failed to parse data: {data}") from e
 ```
 
-### Custom Exception Hierarchy
+### 自定义异常层次结构
 
 ```python
 class AppError(Exception):
@@ -195,9 +197,9 @@ def get_user(user_id: str) -> User:
     return user
 ```
 
-## Context Managers
+## 上下文管理器
 
-### Resource Management
+### 资源管理
 
 ```python
 # Good: Using context managers
@@ -214,7 +216,7 @@ def process_file(path: str) -> str:
         f.close()
 ```
 
-### Custom Context Managers
+### 自定义上下文管理器
 
 ```python
 from contextlib import contextmanager
@@ -232,7 +234,7 @@ with timer("data processing"):
     process_large_dataset()
 ```
 
-### Context Manager Classes
+### 上下文管理器类
 
 ```python
 class DatabaseTransaction:
@@ -256,9 +258,9 @@ with DatabaseTransaction(conn):
     conn.create_profile(user.id, profile_data)
 ```
 
-## Comprehensions and Generators
+## 推导式与生成器
 
-### List Comprehensions
+### 列表推导式
 
 ```python
 # Good: List comprehension for simple transformations
@@ -283,7 +285,7 @@ def filter_and_transform(items: Iterable[int]) -> list[int]:
     return result
 ```
 
-### Generator Expressions
+### 生成器表达式
 
 ```python
 # Good: Generator for lazy evaluation
@@ -293,7 +295,7 @@ total = sum(x * x for x in range(1_000_000))
 total = sum([x * x for x in range(1_000_000)])
 ```
 
-### Generator Functions
+### 生成器函数
 
 ```python
 def read_large_file(path: str) -> Iterator[str]:
@@ -307,9 +309,9 @@ for line in read_large_file("huge.txt"):
     process(line)
 ```
 
-## Data Classes and Named Tuples
+## 数据类与具名元组
 
-### Data Classes
+### 数据类
 
 ```python
 from dataclasses import dataclass, field
@@ -332,7 +334,7 @@ user = User(
 )
 ```
 
-### Data Classes with Validation
+### 带校验的数据类
 
 ```python
 @dataclass
@@ -349,7 +351,7 @@ class User:
             raise ValueError(f"Invalid age: {self.age}")
 ```
 
-### Named Tuples
+### 具名元组
 
 ```python
 from typing import NamedTuple
@@ -368,9 +370,9 @@ p2 = Point(3, 4)
 print(p1.distance(p2))  # 5.0
 ```
 
-## Decorators
+## 装饰器
 
-### Function Decorators
+### 函数装饰器
 
 ```python
 import functools
@@ -394,7 +396,7 @@ def slow_function():
 # slow_function() prints: slow_function took 1.0012s
 ```
 
-### Parameterized Decorators
+### 带参数的装饰器
 
 ```python
 def repeat(times: int):
@@ -416,7 +418,7 @@ def greet(name: str) -> str:
 # greet("Alice") returns ["Hello, Alice!", "Hello, Alice!", "Hello, Alice!"]
 ```
 
-### Class-Based Decorators
+### 基于类的装饰器
 
 ```python
 class CountCalls:
@@ -438,9 +440,9 @@ def process():
 # Each call to process() prints the call count
 ```
 
-## Concurrency Patterns
+## 并发模式
 
-### Threading for I/O-Bound Tasks
+### 用线程处理 I/O 密集型任务
 
 ```python
 import concurrent.futures
@@ -466,7 +468,7 @@ def fetch_all_urls(urls: list[str]) -> dict[str, str]:
     return results
 ```
 
-### Multiprocessing for CPU-Bound Tasks
+### 用多进程处理 CPU 密集型任务
 
 ```python
 def process_data(data: list[int]) -> int:
@@ -480,7 +482,7 @@ def process_all(datasets: list[list[int]]) -> list[int]:
     return results
 ```
 
-### Async/Await for Concurrent I/O
+### 用 Async/Await 处理并发 I/O
 
 ```python
 import asyncio
@@ -499,9 +501,9 @@ async def fetch_all(urls: list[str]) -> dict[str, str]:
     return dict(zip(urls, results))
 ```
 
-## Package Organization
+## 包组织
 
-### Standard Project Layout
+### 标准项目布局
 
 ```
 myproject/
@@ -528,7 +530,7 @@ myproject/
 └── .gitignore
 ```
 
-### Import Conventions
+### 导入约定
 
 ```python
 # Good: Import order - stdlib, third-party, local
@@ -546,7 +548,7 @@ from mypackage.utils import format_name
 # pip install isort
 ```
 
-### __init__.py for Package Exports
+### 用于包导出的 __init__.py
 
 ```python
 # mypackage/__init__.py
@@ -561,9 +563,9 @@ from mypackage.utils import format_name
 __all__ = ["User", "Post", "format_name"]
 ```
 
-## Memory and Performance
+## 内存与性能
 
-### Using __slots__ for Memory Efficiency
+### 使用 __slots__ 提升内存效率
 
 ```python
 # Bad: Regular class uses __dict__ (more memory)
@@ -581,7 +583,7 @@ class Point:
         self.y = y
 ```
 
-### Generator for Large Data
+### 用生成器处理大数据
 
 ```python
 # Bad: Returns full list in memory
@@ -596,7 +598,7 @@ def read_lines(path: str) -> Iterator[str]:
             yield line.strip()
 ```
 
-### Avoid String Concatenation in Loops
+### 避免在循环中拼接字符串
 
 ```python
 # Bad: O(n²) due to string immutability
@@ -616,9 +618,9 @@ for item in items:
 result = buffer.getvalue()
 ```
 
-## Python Tooling Integration
+## Python 工具链集成
 
-### Essential Commands
+### 常用命令
 
 ```bash
 # Code formatting
@@ -643,7 +645,7 @@ pip-audit
 safety check
 ```
 
-### pyproject.toml Configuration
+### pyproject.toml 配置
 
 ```toml
 [project]
@@ -683,22 +685,22 @@ testpaths = ["tests"]
 addopts = "--cov=mypackage --cov-report=term-missing"
 ```
 
-## Quick Reference: Python Idioms
+## 快速参考：Python 惯用法
 
-| Idiom | Description |
+| 惯用法 | 说明 |
 |-------|-------------|
-| EAFP | Easier to Ask Forgiveness than Permission |
-| Context managers | Use `with` for resource management |
-| List comprehensions | For simple transformations |
-| Generators | For lazy evaluation and large datasets |
-| Type hints | Annotate function signatures |
-| Dataclasses | For data containers with auto-generated methods |
-| `__slots__` | For memory optimization |
-| f-strings | For string formatting (Python 3.6+) |
-| `pathlib.Path` | For path operations (Python 3.4+) |
-| `enumerate` | For index-element pairs in loops |
+| EAFP | 请求原谅比请求许可更容易 |
+| 上下文管理器 | 用 `with` 管理资源 |
+| 列表推导式 | 用于简单变换 |
+| 生成器 | 用于惰性求值和大数据集 |
+| 类型提示 | 为函数签名加注解 |
+| 数据类 | 用于自动生成方法的数据容器 |
+| `__slots__` | 用于内存优化 |
+| f-string | 用于字符串格式化（Python 3.6+） |
+| `pathlib.Path` | 用于路径操作（Python 3.4+） |
+| `enumerate` | 用于循环中的索引-元素对 |
 
-## Anti-Patterns to Avoid
+## 应避免的反模式
 
 ```python
 # Bad: Mutable default arguments
@@ -747,5 +749,3 @@ try:
 except SpecificError as e:
     logger.error(f"Operation failed: {e}")
 ```
-
-__Remember__: Python code should be readable, explicit, and follow the principle of least surprise. When in doubt, prioritize clarity over cleverness.
