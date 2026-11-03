@@ -77,7 +77,9 @@ bunx skills ls -a claude-code   # 按 agent 过滤
 | ---- | ---- | --------- |
 | `cpp-coding-standards` | 基于 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) 的 C++ 编码规范。在编写、审查或重构 C++ 代码时使用，推行类型安全、资源安全、不可变性与清晰性。 | C++17/20/23 |
 | `git-commit` | 执行 git commit，带 Conventional Commit 消息分析、智能暂存与消息生成。当用户要求提交变更、创建 git commit，或提及 `/commit` 时使用。支持自动检测 type/scope、从 diff 生成消息、交互式提交、智能文件暂存分组。 | Git |
+| `github-cli` | 使用 `gh` CLI 完成 GitHub 仓库运维：issue 分流（分类、打标签、去重）、PR 管理、CI/CD 失败排查、发布与 changelog、Dependabot 与安全告警监控。包含对不可信仓库内容的处理约束。 | GitHub / gh CLI |
+| `github-pr` | 把本地工作变成 GitHub Pull Request：分支创建与命名、智能暂存与提交、草稿 PR、`--body` 描述格式，以及「拉取审查意见 → 修复 →回复 → 收敛」的完整审查循环。 | GitHub / gh CLI |
 | `python-coding-standards` | Pythonic 惯用法、PEP 8 标准、类型提示以及构建稳健、高效且可维护的 Python 应用程序的最佳实践。 | Python 3.9+ |
 | `ros2-development` | ROS2 开发的全面最佳实践、设计模式与常见陷阱。覆盖节点与组件设计、launch 文件、QoS/DDS 配置、生命周期节点、action、colcon/ament 构建系统、调试工具与生产部署。 | ROS2（Humble / Iron / Jazzy / Rolling） |
-| `rust-coding-standards` | Rust 最佳实践指南。含 9 章参考文档：编码风格与惯用法、Clippy 与 Lint、性能思维、错误处理、自动化测试、泛型与分发、类型状态模式、注释与文档、理解指针。 | Rust 1.88+ |
+| `rust-coding-standards` | Rust 最佳实践速查手册：借用与克隆、`Copy` 与按值传递、`Option`/`Result` 处理、迭代器、Clippy 与 Lint 纪律、性能思维、错误处理、自动化测试、泛型与分发、类型状态模式、注释与文档、指针与线程安全。 | Rust 1.88+ |
 | `web-coding-standards` | 面向 TypeScript、JavaScript、React 与 Node.js 开发的通用编码规范、最佳实践与模式。 | TS/JS/React/Node.js |

@@ -35,20 +35,12 @@ metadata:
    git switch -c <commit-type>/<short-topic>
    ```
 
-根据当前分支的功能进行命名，使用 `<commit-type>`（参考git-commit）和 `<short-topic>`（简短描述本次变更的主题）
-| 类型       | 用途                        |
-| ---------- | ------------------------------ |
-| `feat`     | 新功能                    |
-| `fix`      | Bug 修复                        |
-| `docs`     | 仅文档             |
-| `style`    | 格式/风格（无逻辑变更）    |
-| `refactor` | 代码重构（无新功能/修复） |
-| `perf`     | 性能改进 |
-| `test`     | 添加/更新测试               |
-| `build`    | 构建系统/依赖      |
-| `ci`       | CI/配置变更              |
-| `chore`    | 维护/杂项               |
-| `revert`   | 回滚提交                  |
+   分支信息按 Conventional Commit 约定取 `<commit-type>/<short-topic>`：
+
+   - `<commit-type>` 取自 `git-commit` 技能的类型表（见下表）
+   - `<short-topic>` 用 kebab-case 简短描述本次变更主题，例如 `feat/durable-agent-runtime`、`fix/reflow-selection`
+
+   若当前分支已存在且主题一致，直接复用，不要为了改名而新建分支
 
 3. 校验并提交：
 
@@ -58,7 +50,8 @@ metadata:
    git commit -m "<concise message>"
    ```
 
-   提交信息保持简洁，不要添加生成工具或共同作者的尾注（footer）
+   提交信息按 `git-commit` 技能的规范生成：`<type>[optional scope]: <description>`，type 与分支前缀保持一致，scope 取变更所在的模块
+   保持简洁，不要添加生成工具或共同作者的尾注（footer）
 
 4. 推送分支：
 
@@ -165,7 +158,7 @@ cargo clippy --all-targets --all-features --locked -- -D warnings
 git diff --cached --check
 ```
 
-- 一条意见一个提交，提交信息写清修的是哪个问题（`fix(scope): ...`）
+- 一条意见一个提交，提交信息写清修的是哪个问题，按 `git-commit` 技能生成（如 `fix(policy): honor explicit ask rules for read-only calls`）
 - 修复引入的新行为必须有对应测试；修 bug 要先有能失败的测试
 - 跨平台相关改动（路径、换行、socket、信号、文件锁）在本地至少验证一个平台，其余交给 CI
 
@@ -206,4 +199,9 @@ gh pr comment <number> --body '@codex review'
 - [ ] 无遗留的临时调试代码、被跳过的测试、被静默的 lint 豁免
 
 若审查额度耗尽或审查方长时间无响应，在 PR 中记录当前状态与待确认事项，交由仓库所有者决定是否合并
+
+## 相关技能
+
+- `git-commit` — 本技能的分支前缀与提交信息均沿用其 Conventional Commit 类型表与消息格式；需要交互式暂存、拆分逻辑分组或从 diff 生成消息时，转用该技能
+- `github-cli` — PR 创建后的 CI 排查、issue 分流、发布与安全告警监控
 
