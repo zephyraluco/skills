@@ -9,7 +9,7 @@ metadata:
 
 # Python 开发模式
 
-用于构建健壮、高效且可维护应用的 Pythonic 模式与最佳实践。
+用于构建健壮、高效且可维护应用的 Pythonic 模式与最佳实践
 
 ## 何时启用
 
@@ -22,7 +22,7 @@ metadata:
 
 ### 1. 可读性至上
 
-Python 优先考虑可读性。代码应当显而易见且易于理解。
+Python 优先考虑可读性。代码应当显而易见且易于理解
 
 ```python
 # Good: Clear and readable
@@ -38,7 +38,7 @@ def get_active_users(u):
 
 ### 2. 显式优于隐式
 
-避免魔法；清楚表达代码在做什么。
+避免魔法；清楚表达代码在做什么
 
 ```python
 # Good: Explicit configuration
@@ -56,7 +56,7 @@ some_module.setup()  # What does this do?
 
 ### 3. EAFP —— 请求原谅比请求许可更容易
 
-Python 更偏好异常处理，而非先检查条件。
+Python 更偏好异常处理，而非先检查条件
 
 ```python
 # Good: EAFP style

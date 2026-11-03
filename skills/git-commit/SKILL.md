@@ -6,10 +6,8 @@ description: >
   (2) 从 diff 生成 conventional commit 消息
   (3) 可交互式提交，并可选覆盖 type/scope/description
   (4) 智能文件暂存以形成逻辑分组
-license: MIT
 metadata:
   author: zeal
-  version: "0.0.1"
 allowed-tools: Bash Zsh Git
 ---
 
@@ -128,7 +126,7 @@ EOF
 - 现在时：用 "add" 而不是 "added"
 - 祈使语气：用 "fix bug" 而不是 "fixes bug"
 - 引用 issue：`Closes #123`、`Refs #456`
-- 描述保持在 72 个字符以内
+- 描述保持在 48 个字符以内
 
 ## Git 安全守则
 

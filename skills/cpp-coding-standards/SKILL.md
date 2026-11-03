@@ -9,7 +9,7 @@ metadata:
 
 # C++ 编码规范（C++ Core Guidelines）
 
-面向现代 C++（C++17/20/23）的全面编码规范，源自 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)。推行类型安全、资源安全、不可变性与清晰性。
+面向现代 C++（C++17/20/23）的全面编码规范，源自 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)。推行类型安全、资源安全、不可变性与清晰性
 
 ## 何时使用
 
